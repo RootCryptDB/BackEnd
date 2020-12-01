@@ -14,7 +14,6 @@ const routes = express.Router();
 //Cliente
 routes.get('/index', IndexControllers.store);
 routes.post('/comanda/adicionar', ComandaControllers.store);
-routes.get('/comanda/listar', ComandaControllers.index);
 routes.get('/produto/listar', ProdutoControllers.index);
 routes.get('/produto/buscar/:prod_nome', BuscarProdutoControllers.index);
 
