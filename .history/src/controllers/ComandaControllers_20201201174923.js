@@ -9,7 +9,7 @@ module.exports = {
             return res.json({msg : "Nenhuma comanda a ser Listada"});
         }
         const results = await Comanda.find(
-            {}, 
+            {where:{mesa}}, 
             ['_id', 'mesa', 'cliente', 'pedidos', 'valorTotal'], 
             function(err, someValue){
           } ) 

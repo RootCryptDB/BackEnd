@@ -3,7 +3,6 @@ const Comanda = require('../models/Comanda');
 module.exports = {
 
     async index(req, res) {
-        const {mesa} = req.body;
         const dados = await Comanda.find();
         if(dados == 0){
             return res.json({msg : "Nenhuma comanda a ser Listada"});
