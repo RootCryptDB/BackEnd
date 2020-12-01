@@ -1,11 +1,11 @@
 const Produto = require('../models/Produto');
 module.exports = {
     async store(req, res) {
-        const { produto, quantidade, valor, tipo } = req.body;
-        console.log({ produto, quantidade, valor, tipo })
+        const { produto, thumb, desc, quantidade, valor, tipo } = req.body;
+        console.log({ produto, thumb, desc, quantidade, valor, tipo })
         var armazem = await Produto.findOne({ produto });
         if (!armazem) {
-            const produtoCreate = await Produto.create({ produto, quantidade, valor, tipo });
+            const produtoCreate = await Produto.create({ produto, thumb, desc, quantidade, valor, tipo });
             return res.json(produtoCreate)
         }
         return res.json(armazem);
@@ -32,9 +32,9 @@ module.exports = {
     },
     async update(req, res) {
         const { id_produto } = req.params;
-        const { produto, quantidade, valor, tipo } = req.body;
+        const { produto, thumb, desc, quantidade, valor, tipo } = req.body;
         await Produto.findByIdAndUpdate({ _id: id_produto }, {
-            $set: { produto, quantidade, valor, tipo }
+            $set: { produto, thumb, desc, quantidade, valor, tipo }
         }, { upsert: true }, (err) => {
             if (err) {
                 return res.status(400).json({ error: true, msg: "Ops ! Algo deu errado." })
